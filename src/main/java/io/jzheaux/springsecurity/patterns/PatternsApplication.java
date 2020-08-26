@@ -3,6 +3,8 @@ package io.jzheaux.springsecurity.patterns;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
@@ -23,6 +25,11 @@ public class PatternsApplication {
 		@GetMapping("/")
 		public String hello() {
 			return "Hello!";
+		}
+
+		@PostMapping("/location/{where}")
+		public String move(@PathVariable("where") String where) {
+			return this.locationService.moveTo(where);
 		}
 	}
 
